@@ -8,7 +8,6 @@ class Coordinates
 protected:
 	float x, y;
 public:
-	Coordinates(int x = 0, int y = 0);  
 	Coordinates(float x = 0, float y = 0);  
 
 

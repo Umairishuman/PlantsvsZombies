@@ -16,10 +16,10 @@ protected:
 	Coordinates P1;
 
 public:
-	MySprite(string path = "", int x = 0, int y = 0);
+	MySprite(string path = "", float x = 0, float y = 0);
 
 	void setPath(string path);
-	void setCoordinates(int x, int y);
+	void setCoordinates(float x, float y);
 	void setOpacity(float opacity);
 	void scale(float x, float y);
 

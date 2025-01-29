@@ -31,7 +31,7 @@ protected:
     Font font;
     Text PlayerText;
 public:
-    GameScreen(string backgroundPath, int noOfLevels = 6, bool previousState = false);
+    GameScreen(string backgroundPath, int noOfLevels, bool previousState = false);
     ~GameScreen();
 
     void AddLevel(int level);

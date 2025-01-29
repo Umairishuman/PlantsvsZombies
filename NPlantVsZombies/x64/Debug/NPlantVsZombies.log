@@ -1,79 +1,14 @@
-﻿  AnimatMySprite.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,84): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,84): warning C4244:         with
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,84): warning C4244:         [
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,84): warning C4244:             T=int
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,84): warning C4244:         ]
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,60): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,60): warning C4244:         with
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,60): warning C4244:         [
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,60): warning C4244:             T=int
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\AnimatMySprite.cpp(47,60): warning C4244:         ]
-  Block.cpp
-  Bullet.cpp
-  CherryBomb.cpp
-  Coordinates.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Coordinates.cpp(2,42): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Coordinates.cpp(2,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  DancingZombie.cpp
-  EndScreen.cpp
-  Executor.cpp
-  FlyingZombies.cpp
-  Football.cpp
-  GameScreen.cpp
-  Grid.cpp
-  HighScore.cpp
-  InstructionScreen.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\InstructionScreen.cpp(24,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  InventPlant.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\InventPlant.cpp(50,102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\InventPlant.cpp(50,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Lane.cpp
-  LawnMower.cpp
-  Level.cpp
-  Level1.cpp
-  Level2.cpp
-  Generating Code...
-  Compiling...
-  Level3.cpp
-  Level4.cpp
-  Level5.cpp
-  Level6.cpp
-  Main.cpp
+﻿  Executor.cpp
   MenuScreen.cpp
-  MySprite.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MySprite.cpp(18,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MySprite.cpp(19,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MySprite.cpp(29,32): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
-  Peashooter.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Peashooter.cpp(9,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  PlantFactory.cpp
-  Plants.cpp
-  Player.cpp
-  PuffShroom.cpp
-  Repeater.cpp
-  ScoreBoard.cpp
-  Screen.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Screen.cpp(2,86): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Screen.cpp(2,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Shooters.cpp
-  SimpleZombie.cpp
-  SnowPea.cpp
-  Sun.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(11,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(42,114): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(42,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(50,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(50,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(53,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Sun.cpp(53,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Sunflower.cpp
-  Generating Code...
-  Compiling...
-  Wallnut.cpp
-  Zombie.cpp
-  ZombieFactory.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\ZombieFactory.cpp(26,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\ZombieFactory.cpp(31,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(15,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(15,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(21,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(21,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(27,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(27,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(33,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(33,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(54,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(58,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
   NPlantVsZombies.vcxproj -> F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\x64\Debug\NPlantVsZombies.exe

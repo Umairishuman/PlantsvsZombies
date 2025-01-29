@@ -1,47 +1,44 @@
 #include "MenuScreen.h"
-MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPath) :Screen(backgroundPath, true), Toggler(togglerPath, 400, 100) {
+MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPath) :Screen(backgroundPath, true), Toggler(togglerPath, 400, 100), NO_OF_OPTIONS(4) {
     this->currentSelection = 1;
 
     if (!font.loadFromFile(fontPath)) {
         cout << "Error loading font" << endl;
     }
+    int StartGameX = 400;
+    int StartGameY = 100;
+    
     StartGame.setFont(font);
     StartGame.setString("Start Game");
     StartGame.setCharacterSize(50);
     StartGame.setFillColor(Color::Red);
-    StartGame.setPosition(400, 100);
-
-    ResumeGame.setFont(font);
-    ResumeGame.setString("Resume Game");
-    ResumeGame.setCharacterSize(50);
-    ResumeGame.setFillColor(Color::Red);
-    ResumeGame.setPosition(400, 200);
+    StartGame.setPosition(StartGameX, StartGameY);
 
     Instructions.setFont(font);
     Instructions.setString("Instructions");
     Instructions.setCharacterSize(50);
     Instructions.setFillColor(Color::Red);
-    Instructions.setPosition(400, 300);
+    Instructions.setPosition(StartGameX, StartGameY*2);
 
     HighScore.setFont(font);
     HighScore.setString("High Score");
     HighScore.setCharacterSize(50);
     HighScore.setFillColor(Color::Red);
-    HighScore.setPosition(400, 400);
+    HighScore.setPosition(StartGameX, StartGameY*3);
 
     ExitGame.setFont(font);
     ExitGame.setString("Exit Game");
     ExitGame.setCharacterSize(50);
     ExitGame.setFillColor(Color::Red);
-    ExitGame.setPosition(400, 500);
+    ExitGame.setPosition(StartGameX, StartGameY*4);
 
 
 }
 void MenuScreen::setSelection(int selection) {
     if (selection <= 0) {
-        selection = 5;
+        selection = NO_OF_OPTIONS   ;
     }
-    else if (selection >= 6) {
+    else if (selection >= NO_OF_OPTIONS + 1) {
         selection = 1;
     }
     this->currentSelection = selection;
@@ -54,11 +51,11 @@ int MenuScreen::handleInput(Event event, RenderWindow& window) {
     if (event.type == Event::KeyPressed) {
         if (event.key.code == Keyboard::Key::Up) {
             setSelection(currentSelection - 1);
-            Toggler.setCoordinates((int)Toggler.getCoordinates().getX(), (int)currentSelection * 100);
+            Toggler.setCoordinates(Toggler.getCoordinates().getX(), currentSelection * 100);
         }
         else if (event.key.code == Keyboard::Key::Down) {
             setSelection(currentSelection + 1);
-            Toggler.setCoordinates((int)Toggler.getCoordinates().getX(), (int)currentSelection * 100);
+            Toggler.setCoordinates(Toggler.getCoordinates().getX(), currentSelection * 100);
         }
         else if (event.key.code == Keyboard::Key::Return) {
             this->visible = false;
