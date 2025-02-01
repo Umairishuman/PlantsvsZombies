@@ -2,6 +2,8 @@
 MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPath) :Screen(backgroundPath, true), Toggler(togglerPath, 300, 100), NO_OF_OPTIONS(4) {
     this->currentSelection = 1;
 
+    
+
     this->Background.setOpacity(0.5);
     if (!font.loadFromFile(fontPath)) {
         cout << "Error loading font" << endl;
@@ -33,7 +35,13 @@ MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPat
     ExitGame.setPosition(StartGameX, StartGameY*4);
     ExitGame.setFillColor(Color(27, 131, 27));
 
-
+    //setting sound
+    togglebuffer.loadFromFile("..\\assets\\music\\toggle.wav");
+    for(int i = 0; i < 5; i++){
+        toggleSound[i].setBuffer(togglebuffer);
+        toggleSound[i].setVolume(50);
+        toggleSound[i].setLoop(false);
+    }
 }
 void MenuScreen::setSelection(int selection) {
     if (selection <= 0) {
@@ -77,10 +85,24 @@ int MenuScreen::handleInput(Event event, RenderWindow& window) {
         if (event.key.code == Keyboard::Key::Up) {
             setSelection(currentSelection - 1);
             Toggler.setCoordinates(Toggler.getCoordinates().getX(), currentSelection * 100);
+            
+            for(int i = 0; i < SOUND_POOL_SIZE; i++){
+                if(toggleSound[i].getStatus() != Sound::Status::Playing){
+                    toggleSound[i].play();
+                    break;
+                }
+            }
         }
         else if (event.key.code == Keyboard::Key::Down) {
             setSelection(currentSelection + 1);
             Toggler.setCoordinates(Toggler.getCoordinates().getX(), currentSelection * 100);
+            for(int i = 0; i < SOUND_POOL_SIZE; i++){
+                if(toggleSound[i].getStatus() != Sound::Status::Playing){
+                    toggleSound[i].play();
+                    break;
+                }
+            }
+            
         }
         else if (event.key.code == Keyboard::Key::Return) {
             this->visible = false;

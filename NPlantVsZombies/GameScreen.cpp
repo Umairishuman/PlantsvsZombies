@@ -88,9 +88,9 @@ void GameScreen::SortPlayers(){
     }
 }
 void GameScreen::LoadPlayers(){
-    std::ifstream inFile("players.txt", std::ios::in);
+    ifstream inFile("players.txt", std::ios::in);
     if (inFile.is_open()) {
-        std::string name;
+        string name;
         int score;
         while (inFile >> name >> score) {
             players[playerCountIndex].setName(name);players[playerCountIndex].setScore(score);
@@ -109,9 +109,9 @@ void GameScreen::AddLevel(int level) {
     if (level == 1) {
         NO_OF_ZOMBIES = 6;
         NO_OF_WAVES = 0;
-        ALLOWED_PLANTS = 1;
+        ALLOWED_PLANTS = 5;
         NO_OF_LANES = 5;
-        ALLOWED_ZOMBIES = 1;
+        ALLOWED_ZOMBIES = 2;
         levels[level - 1] = new Level1(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 2) {
@@ -207,11 +207,9 @@ int GameScreen::handleInput(Event e, RenderWindow& window) {
 }
 void GameScreen::Draw(RenderWindow& window) {
     if(!previousState){
-        // Background.Draw(window);
         NameBack.Draw(window);
         currentPlayer.Draw(window);
         return;
-        // scoreBoard.Draw(window);
     }
     start();
 
@@ -221,21 +219,21 @@ void GameScreen::Draw(RenderWindow& window) {
     }
     PlayerText.setString("Player: " + currentPlayer.getName());
     window.draw(PlayerText);
-    if(topPlayer == 0){
-        Badge.setPath("..\\assets\\Spritesheets\\1st Position.png");
-        Badge.setCoordinates(900, 25);
-        Badge.Draw(window);
-    }
-    else if(topPlayer == 1){
-        Badge.setPath("..\\assets\\Spritesheets\\2nd Position.png");
-        Badge.setCoordinates(900, 25);
-        Badge.Draw(window);
-    }
-    else if(topPlayer == 2){
-        Badge.setPath("..\\assets\\Spritesheets\\3rd Position.png");
-        Badge.setCoordinates(900, 25);
-        Badge.Draw(window);
-    }
+    // if(topPlayer == 0){
+    //     Badge.setPath("..\\assets\\Spritesheets\\1st Position.png");
+    //     Badge.setCoordinates(900, 25);
+    //     Badge.Draw(window);
+    // }
+    // else if(topPlayer == 1){
+    //     Badge.setPath("..\\assets\\Spritesheets\\2nd Position.png");
+    //     Badge.setCoordinates(900, 25);
+    //     Badge.Draw(window);
+    // }
+    // else if(topPlayer == 2){
+    //     Badge.setPath("..\\assets\\Spritesheets\\3rd Position.png");
+    //     Badge.setCoordinates(900, 25);
+    //     Badge.Draw(window);
+    // }
 }
 
 // void GameScreen::serialize(ostream& file) {

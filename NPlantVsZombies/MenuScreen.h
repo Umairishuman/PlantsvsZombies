@@ -14,7 +14,9 @@ protected:
     Font font;
 
     const int NO_OF_OPTIONS;
-
+    const int SOUND_POOL_SIZE = 20;
+    Sound toggleSound[20];
+    SoundBuffer togglebuffer;
 public:
     MenuScreen(string backgroundPath, string fontPath, string togglerPath);
     ~MenuScreen();

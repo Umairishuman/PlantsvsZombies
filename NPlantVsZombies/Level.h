@@ -11,21 +11,28 @@ class Level{
 protected:
     Clock levelIntro;
     Clock levelClock;
+
     MySprite Background;
     Grid *grid;
     bool isOn;
+
     Sun sun;
-    int noOfZombies;
-    int allowedPlants;
-    int selector;
-    int noOflanes;
     int sunAmount;
+
+    int noOfZombies;
+    int allowedZombies; //types of zombies
+    int allowedPlants;  //types of plants
+    //for plant selection
+    int selector;
     bool selection;
-    int allowedZombies;
+    //score things
     int lives;
     int score;
+    //level over things
     bool GameOver;
     bool levelCleared;
+    //useless things that are not used but removing them is a hassle
+    int noOflanes;
 
     LawnMower** lawnMower;
     PlantFactory* plantFactory;
@@ -39,7 +46,8 @@ protected:
     Text GameOverText;
     Text LevelUpText;
 
-    Music soundLevelUp;
+    Sound soundLevelUp;
+    SoundBuffer bufferLevelUp;
 public:
     Level(string backPath = 0, int noOfZombies = 0, int noOfWaves = 0, int allowedPlants = 0, bool isOn = true, int noOflanes = 0, int allowedZombies = 5);
     virtual ~Level();
@@ -56,16 +64,18 @@ public:
     int getNoOfZombies();
     int getAllowedPlants();
     bool getOn();
-    bool CheckForSelection(RenderWindow& window);
+    
     bool getGameOver();
     bool getLevelCleared();
+
+    bool CheckForSelection(RenderWindow& window);
     void CheckZombiePlantCollision();
     void CollsionControl();
     virtual int handleInput(Event e, RenderWindow& window);
     virtual void Draw(RenderWindow& window) = 0 ;
 
-    virtual  void serialize(ostream& file);
-    virtual void deserialize(istream& file);
+    // virtual  void serialize(ostream& file);
+    // virtual void deserialize(istream& file);
 };
 #endif
 

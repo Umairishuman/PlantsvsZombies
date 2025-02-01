@@ -1,28 +1,40 @@
 #include "Level.h"
 Level::Level(string backPath, int noOfZombies, int noOfWaves, int allowedPlants, bool isOn, int noOflanes, int allowedZombies) :Background(backPath), noOfZombies(noOfZombies), allowedPlants(allowedPlants), isOn(isOn),noOflanes(noOflanes), sun(0, 0,71, 71){
+    
     levelCleared = false;
+    
     this->noOfZombies = noOfZombies;
     this->lives = 3;
     this->score = 0;
     this->allowedZombies = allowedZombies;
-    grid = new Grid(5, 255, 80, 101);
+    //grid for the level(same for all levels)
+    const int GRID_START_X = 255;
+    const int GRID_START_Y = 80;
+    const int GRID_BLOCK_WIDTH = 101;
+    const int NO_OF_LANES = 5;
+    grid = new Grid(NO_OF_LANES, GRID_START_X, GRID_START_Y, GRID_BLOCK_WIDTH);
+    //for plant selection
     selection = false;
     selector = -1;
-    plantFactory = new PlantFactory(allowedPlants, grid);
-    zombieFactory = new ZombieFactory(noOfZombies, allowedZombies, grid, score);
-    lawnMower = new LawnMower*[noOflanes];
-    this->sunAmount = 100;
+    
+    plantFactory = new PlantFactory(allowedPlants, grid);   //manages plants
+    zombieFactory = new ZombieFactory(noOfZombies, allowedZombies, grid, score);    //manages zombies    
+    lawnMower = new LawnMower*[noOflanes];  //all launmowers
+    for(int i = 0; i < noOflanes; i++){
+        lawnMower[i] = new LawnMower(160, 80 + i*101, "..\\assets\\Spritesheets\\lawnmower.png");
+    }
+    this->sunAmount = 100;  //starting value for sun
     GameOver = false;
 
 
-    if (!font.loadFromFile("..\\assets\\fonts\\VampireWars.ttf")) {
+    if (!font.loadFromFile("..\\assets\\fonts\\HouseofTerror Regular.ttf")) {
         cout << "Error loading font" << endl;
     }
     sunText.setFont(font);
     sunText.setString(to_string(sunAmount));
     sunText.setCharacterSize(25);
     sunText.setFillColor(Color::Black);
-    sunText.setPosition(25, 50);  
+    sunText.setPosition(20, 50);  
 
     livesText.setFont(font);
     livesText.setString("Lives: " + to_string(lives));
@@ -42,16 +54,13 @@ Level::Level(string backPath, int noOfZombies, int noOfWaves, int allowedPlants,
     LevelUpText.setFillColor(Color::Black);
     LevelUpText.setPosition(400, 250);
 
-    if(!soundLevelUp.openFromFile("..\\assets\\music\\levelup.mp3")){
+    if(!this->bufferLevelUp.loadFromFile("..\\assets\\music\\levelup.wav")){
         cout << "Error loading sound" << endl;
     }
+    soundLevelUp.setBuffer(bufferLevelUp);
     soundLevelUp.setVolume(50);
-    soundLevelUp.setLoop(false);
 
-
-    for(int i = 0; i < noOflanes; i++){
-        lawnMower[i] = new LawnMower(160, 80 + i*101, "..\\assets\\Spritesheets\\lawnmower.png");
-    }
+    
 }
 
 void Level::setOn(bool isOn) {
@@ -191,54 +200,54 @@ bool Level::CheckForSelection(RenderWindow& window){
     return false;
 }
 
-void Level::serialize(ostream& file){
-    Background.serialize(file);
-    file.write(reinterpret_cast<const char*>(&isOn), sizeof(isOn));
-    sun.serialize(file);
-    file.write(reinterpret_cast<const char*>(&noOfZombies), sizeof(noOfZombies));
-    file.write(reinterpret_cast<const char*>(&allowedPlants), sizeof(allowedPlants));
-    file.write(reinterpret_cast<const char*>(&selector), sizeof(selector));
-    file.write(reinterpret_cast<const char*>(&selection), sizeof(selection));
-    file.write(reinterpret_cast<const char*>(&sunAmount), sizeof(sunAmount));
-    file.write(reinterpret_cast<const char*>(&lives), sizeof(lives));
-    file.write(reinterpret_cast<const char*>(&score), sizeof(score));
-    file.write(reinterpret_cast<const char*>(&levelCleared), sizeof(levelCleared));
-    file.write(reinterpret_cast<const char*>(&noOflanes), sizeof(noOflanes));
-    file.write(reinterpret_cast<const char*>(&allowedZombies), sizeof(allowedZombies));
-    grid->serialize(file);
-    sun.serialize(file);
-    plantFactory->serialize(file);
-    zombieFactory->serialize(file);
-    for(int i = 0; i < noOflanes; i++){
-        lawnMower[i]->serialize(file);
-    }
-}
-void Level::deserialize(istream& file){
-    Background.deserialize(file);
-    file.read(reinterpret_cast<char*>(&isOn), sizeof(isOn));
-    sun.deserialize(file);
-    cout << "Loading level" << endl;
-    file.read(reinterpret_cast<char*>(&noOfZombies), sizeof(noOfZombies));
-    file.read(reinterpret_cast<char*>(&allowedPlants), sizeof(allowedPlants));
-    file.read(reinterpret_cast<char*>(&selector), sizeof(selector));
-    file.read(reinterpret_cast<char*>(&selection), sizeof(selection));
-    file.read(reinterpret_cast<char*>(&sunAmount), sizeof(sunAmount));
-    file.read(reinterpret_cast<char*>(&lives), sizeof(lives));
-    file.read(reinterpret_cast<char*>(&score), sizeof(score));
-    file.read(reinterpret_cast<char*>(&levelCleared), sizeof(levelCleared));
-    file.read(reinterpret_cast<char*>(&noOflanes), sizeof(noOflanes));
-    file.read(reinterpret_cast<char*>(&allowedZombies), sizeof(allowedZombies));
-    grid->deserialize(file);
-    sun.deserialize(file);
-    plantFactory->deserialize(file);
-    zombieFactory->deserialize(file);
-    lawnMower = new LawnMower*[noOflanes];
-    for(int i = 0; i < noOflanes; i++){
-        lawnMower[i] = new LawnMower(160, 80 + i*101, "..\\assets\\Spritesheets\\lawnmower.png");
-        lawnMower[i]->deserialize(file);
-    }
-    font.loadFromFile("..\\assets\\fonts\\VampireWars.ttf");
-}
+// void Level::serialize(ostream& file){
+//     Background.serialize(file);
+//     file.write(reinterpret_cast<const char*>(&isOn), sizeof(isOn));
+//     sun.serialize(file);
+//     file.write(reinterpret_cast<const char*>(&noOfZombies), sizeof(noOfZombies));
+//     file.write(reinterpret_cast<const char*>(&allowedPlants), sizeof(allowedPlants));
+//     file.write(reinterpret_cast<const char*>(&selector), sizeof(selector));
+//     file.write(reinterpret_cast<const char*>(&selection), sizeof(selection));
+//     file.write(reinterpret_cast<const char*>(&sunAmount), sizeof(sunAmount));
+//     file.write(reinterpret_cast<const char*>(&lives), sizeof(lives));
+//     file.write(reinterpret_cast<const char*>(&score), sizeof(score));
+//     file.write(reinterpret_cast<const char*>(&levelCleared), sizeof(levelCleared));
+//     file.write(reinterpret_cast<const char*>(&noOflanes), sizeof(noOflanes));
+//     file.write(reinterpret_cast<const char*>(&allowedZombies), sizeof(allowedZombies));
+//     grid->serialize(file);
+//     sun.serialize(file);
+//     plantFactory->serialize(file);
+//     zombieFactory->serialize(file);
+//     for(int i = 0; i < noOflanes; i++){
+//         lawnMower[i]->serialize(file);
+//     }
+// }
+// void Level::deserialize(istream& file){
+//     Background.deserialize(file);
+//     file.read(reinterpret_cast<char*>(&isOn), sizeof(isOn));
+//     sun.deserialize(file);
+//     cout << "Loading level" << endl;
+//     file.read(reinterpret_cast<char*>(&noOfZombies), sizeof(noOfZombies));
+//     file.read(reinterpret_cast<char*>(&allowedPlants), sizeof(allowedPlants));
+//     file.read(reinterpret_cast<char*>(&selector), sizeof(selector));
+//     file.read(reinterpret_cast<char*>(&selection), sizeof(selection));
+//     file.read(reinterpret_cast<char*>(&sunAmount), sizeof(sunAmount));
+//     file.read(reinterpret_cast<char*>(&lives), sizeof(lives));
+//     file.read(reinterpret_cast<char*>(&score), sizeof(score));
+//     file.read(reinterpret_cast<char*>(&levelCleared), sizeof(levelCleared));
+//     file.read(reinterpret_cast<char*>(&noOflanes), sizeof(noOflanes));
+//     file.read(reinterpret_cast<char*>(&allowedZombies), sizeof(allowedZombies));
+//     grid->deserialize(file);
+//     sun.deserialize(file);
+//     plantFactory->deserialize(file);
+//     zombieFactory->deserialize(file);
+//     lawnMower = new LawnMower*[noOflanes];
+//     for(int i = 0; i < noOflanes; i++){
+//         lawnMower[i] = new LawnMower(160, 80 + i*101, "..\\assets\\Spritesheets\\lawnmower.png");
+//         lawnMower[i]->deserialize(file);
+//     }
+//     font.loadFromFile("..\\assets\\fonts\\VampireWars.ttf");
+// }
 
 Level::~Level() {
     delete grid;

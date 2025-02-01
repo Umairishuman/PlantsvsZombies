@@ -21,7 +21,7 @@ protected:
     const string MENU_BACKGROUND_PATH = "..\\assets\\Background\\StartScreen-background.png";
     const string MENU_FONT_PATH = "..\\assets\\fonts\\HouseofTerror Regular.ttf";
     const string MENU_TOGGLER_PATH = "..\\assets\\Plants\\Peashooter\\Peashooter_0.png";
-    const string GAME_MUSIC_PATH = "..\\assets\\music\\Main.mp3";
+    const string GAME_MUSIC_PATH = "..\\assets\\music\\Main.wav";
     //Game screen constants
     const string GAME_SCREEN_PATH = "..\\assets\\Background\\Frontyard.jpg";
     const int NO_OF_LEVELS = 5;
