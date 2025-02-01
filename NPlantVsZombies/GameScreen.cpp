@@ -174,7 +174,7 @@ int GameScreen::handleInput(Event e, RenderWindow& window) {
     if(e.type == Event::KeyPressed ){
         if(e.key.code == Keyboard::Key::Escape){
             visible = false;
-            return 0;
+            return 1;
         }
     }
     //if game is just loaded and player has to enter name

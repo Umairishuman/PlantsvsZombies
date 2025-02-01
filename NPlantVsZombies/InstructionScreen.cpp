@@ -30,7 +30,7 @@ int InstructionScreen::handleInput(Event event, RenderWindow& window){
     if(event.type == Event::KeyPressed){
         if(event.key.code == Keyboard::Key::Escape){
             this->setVisible(false);
-            return 0;
+            return 1;
         }
     }
     return -1;

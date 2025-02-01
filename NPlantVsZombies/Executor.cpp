@@ -11,7 +11,7 @@ Executor::Executor() :screens(nullptr), noOfScreens(6), currentScreen(0) {
     if(music.openFromFile(GAME_MUSIC_PATH)){
         music.setVolume(20);
         music.setLoop(true);
-        music.play();
+        //music.play();
     }
 }
 void Executor::handleInput(Event e, RenderWindow& window) {
@@ -35,6 +35,7 @@ void Executor::handleInput(Event e, RenderWindow& window) {
                 screens[MENU_SCREEN]->setVisible(true);
             }
             else{
+                music.play();
                 screens[MENU_SCREEN] = new MenuScreen(MENU_BACKGROUND_PATH, MENU_FONT_PATH, MENU_TOGGLER_PATH);
                 screens[MENU_SCREEN]->setVisible(true);
                 return;

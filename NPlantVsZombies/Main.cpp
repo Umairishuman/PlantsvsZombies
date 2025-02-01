@@ -18,10 +18,10 @@ Instructor: Mr. Sheryar Rashid
 int main()
 {
 	RenderWindow window(VideoMode(1000, 600), "Plants Vs Zombies");
-	window.setSize(sf::Vector2u(640, 640)); 
 	window.setPosition(sf::Vector2i(100, 0));
 	Executor executor;
 	
+	window.setSize(sf::Vector2u(1000, 600));
 
 	while (window.isOpen())
 	{
@@ -32,7 +32,6 @@ int main()
 				window.close();
 		}
 		executor.Run(window);
-		window.setSize(sf::Vector2u(1000, 600));
 		window.display();
 		window.clear();
 	}
