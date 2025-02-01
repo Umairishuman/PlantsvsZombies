@@ -1,7 +1,8 @@
 #include "MenuScreen.h"
-MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPath) :Screen(backgroundPath, true), Toggler(togglerPath, 400, 100), NO_OF_OPTIONS(4) {
+MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPath) :Screen(backgroundPath, true), Toggler(togglerPath, 300, 100), NO_OF_OPTIONS(4) {
     this->currentSelection = 1;
 
+    this->Background.setOpacity(0.5);
     if (!font.loadFromFile(fontPath)) {
         cout << "Error loading font" << endl;
     }
@@ -9,39 +10,63 @@ MenuScreen::MenuScreen(string backgroundPath, string fontPath, string togglerPat
     int StartGameY = 100;
     
     StartGame.setFont(font);
-    StartGame.setString("Start Game");
-    StartGame.setCharacterSize(50);
-    StartGame.setFillColor(Color::Red);
+    StartGame.setString("START GAME");
+    StartGame.setCharacterSize(60);
     StartGame.setPosition(StartGameX, StartGameY);
+    StartGame.setFillColor(Color::Green);
 
     Instructions.setFont(font);
-    Instructions.setString("Instructions");
-    Instructions.setCharacterSize(50);
-    Instructions.setFillColor(Color::Red);
+    Instructions.setString("INSTRUCTIONS");
+    Instructions.setCharacterSize(60);
     Instructions.setPosition(StartGameX, StartGameY*2);
+    Instructions.setFillColor(Color(27, 131, 27));
 
     HighScore.setFont(font);
-    HighScore.setString("High Score");
-    HighScore.setCharacterSize(50);
-    HighScore.setFillColor(Color::Red);
+    HighScore.setString("HIGH SCORE");
+    HighScore.setCharacterSize(60);
     HighScore.setPosition(StartGameX, StartGameY*3);
+    HighScore.setFillColor(Color(27, 131, 27));
 
     ExitGame.setFont(font);
-    ExitGame.setString("Exit Game");
-    ExitGame.setCharacterSize(50);
-    ExitGame.setFillColor(Color::Red);
+    ExitGame.setString("EXIT GAME");
+    ExitGame.setCharacterSize(60);
     ExitGame.setPosition(StartGameX, StartGameY*4);
+    ExitGame.setFillColor(Color(27, 131, 27));
 
 
 }
 void MenuScreen::setSelection(int selection) {
     if (selection <= 0) {
-        selection = NO_OF_OPTIONS   ;
+        selection = NO_OF_OPTIONS;
     }
     else if (selection >= NO_OF_OPTIONS + 1) {
         selection = 1;
     }
     this->currentSelection = selection;
+    if(selection == 1){
+        StartGame.setFillColor(Color::Green);
+        Instructions.setFillColor(Color(27, 131, 27));
+        HighScore.setFillColor(Color(27, 131, 27));
+        ExitGame.setFillColor(Color(27, 131, 27));
+    }
+    else if(selection == 2){
+        StartGame.setFillColor(Color(27, 131, 27));
+        Instructions.setFillColor(Color::Green);
+        HighScore.setFillColor(Color(27, 131, 27));
+        ExitGame.setFillColor(Color(27, 131, 27));
+    }
+    else if(selection == 3){
+        StartGame.setFillColor(Color(27, 131, 27));
+        HighScore.setFillColor(Color::Green);
+        Instructions.setFillColor(Color(27, 131, 27));
+        ExitGame.setFillColor(Color(27, 131, 27));
+    }
+    else if(selection == 4){
+        StartGame.setFillColor(Color(27, 131, 27));
+        Instructions.setFillColor(Color(27, 131, 27));
+        HighScore.setFillColor(Color(27, 131, 27));
+        ExitGame.setFillColor(Color::Green);
+    }
 }
 int MenuScreen::getSelection() {
     return this->currentSelection;
@@ -59,7 +84,7 @@ int MenuScreen::handleInput(Event event, RenderWindow& window) {
         }
         else if (event.key.code == Keyboard::Key::Return) {
             this->visible = false;
-            return currentSelection;
+            return currentSelection + 1;
         }
         return 0;
 

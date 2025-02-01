@@ -213,6 +213,7 @@
     <ClCompile Include="Shooters.cpp" />
     <ClCompile Include="SimpleZombie.cpp" />
     <ClCompile Include="SnowPea.cpp" />
+    <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="Sunflower.cpp" />
     <ClCompile Include="Wallnut.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="Shooters.h" />
     <ClInclude Include="SimpleZombie.h" />
     <ClInclude Include="SnowPea.h" />
+    <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="Sunflower.h" />
     <ClInclude Include="Wallnut.h" />

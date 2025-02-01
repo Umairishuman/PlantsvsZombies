@@ -3,14 +3,11 @@ Executor::Executor() :screens(nullptr), noOfScreens(6), currentScreen(0) {
     screens = new Screen * [noOfScreens];
     for(int i = 0; i < noOfScreens; i++){
         screens[i] = nullptr;
-    }
-    //"../Images/Plants/Frontyard.jpg";
-    
-
-    MenuScreen* menuScreen = new MenuScreen(MENU_BACKGROUND_PATH, MENU_FONT_PATH, MENU_TOGGLER_PATH);
-
-    screens[0] = menuScreen;
+    }    
+    StartScreen* startScreen = new StartScreen(START_BACKGROUND_PATH);    
+    screens[0] = startScreen;
     screens[0]->setVisible(true);
+
     if(music.openFromFile(GAME_MUSIC_PATH)){
         music.setVolume(20);
         music.setLoop(true);
@@ -21,11 +18,12 @@ void Executor::handleInput(Event e, RenderWindow& window) {
     int nextScreen = -1;
 
     //GAME INDEX CONSTANTS
-    const int MENU_SCREEN = 0;
-    const int GAME_SCREEN = 1;
-    const int INSTRUCTION_SCREEN = 2;
-    const int HIGHSCORE_SCREEN = 3;
-    const int EXIT_SCREEN = 4;
+    const int START_SCREEN = 0;
+    const int MENU_SCREEN = 1;
+    const int GAME_SCREEN = 2;
+    const int INSTRUCTION_SCREEN = 3;
+    const int HIGHSCORE_SCREEN = 4;
+    const int EXIT_SCREEN = 5;
 
 
     for (int i = 0; i < noOfScreens; i++) {
@@ -33,9 +31,16 @@ void Executor::handleInput(Event e, RenderWindow& window) {
             nextScreen = screens[i]->handleInput(e, window);
         
         if(nextScreen == MENU_SCREEN){
-            screens[MENU_SCREEN]->setVisible(true);
+            if(screens[MENU_SCREEN] != nullptr){
+                screens[MENU_SCREEN]->setVisible(true);
+            }
+            else{
+                screens[MENU_SCREEN] = new MenuScreen(MENU_BACKGROUND_PATH, MENU_FONT_PATH, MENU_TOGGLER_PATH);
+                screens[MENU_SCREEN]->setVisible(true);
+                return;
+            }
         }
-        if(nextScreen == GAME_SCREEN){
+        else if(nextScreen == GAME_SCREEN){
             if(screens[GAME_SCREEN] != nullptr){
                 screens[GAME_SCREEN]->setVisible(true);
             }
