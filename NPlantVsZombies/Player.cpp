@@ -1,11 +1,11 @@
 #include "Player.h"
 Player::Player(string name, int score) :name(name), score(score) {
-    font.loadFromFile("..\\assets\\fonts\\VampireWars.ttf");
+    font.loadFromFile("..\\assets\\fonts\\HouseofTerror Regular.ttf");
     text.setFont(font);
-    text.setCharacterSize(30);
-    text.setFillColor(Color::Black);
-    text.setPosition(300, 250);
-    text.setString("Enter your name: ");
+    text.setCharacterSize(40);
+    text.setFillColor(Color(99, 224, 99));
+    text.setPosition(260, 230);
+    text.setString("ENTER YOUR NAME: ");
 }
 void Player::setName(string name) {
     this->name = name;
@@ -33,7 +33,7 @@ void Player::EnterName(Event &e) {
             name += e.text.unicode;
         }
     }
-    text.setString("Enter your name: " + name);
+    text.setString("ENTER YOUR NAME: " + name);
 }
 void Player::Draw(RenderWindow& window) {
     window.draw(text);

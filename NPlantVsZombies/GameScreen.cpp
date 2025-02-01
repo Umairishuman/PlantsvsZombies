@@ -1,35 +1,31 @@
 #include "GameScreen.h"
-GameScreen::GameScreen(string backgroundPath, int noOfLevels, bool previousState) :Screen(backgroundPath, false), noOflevels(noOfLevels), currentLevel(0),Badge("..\\assets\\Spritesheets\\1st Position.png", 800, 25), NameBack("..\\assets\\Background\\ForNameEntry.jpg", 100, 100), scoreBoard(currentPlayer.getName(), currentPlayer.getScore()){
-    levels = new Level* [noOfLevels];
+GameScreen::GameScreen(string backgroundPath, int noOfLevels, bool previousState) :Screen(backgroundPath, false), noOflevels(noOfLevels), currentLevel(0),Badge("..\\assets\\Spritesheets\\1st Position.png", 800, 25), NameBack(NAME_ENTRY_PATH, 100, 150){
+    NameBack.setOpacity(0.6);
+
     entpressed = false;
-    this->playerCountIndex =0;
-    paused = false;
-    this->topPlayer = -1;
     this->previousState = previousState;
+    paused = false;
+
+    levels = new Level* [noOfLevels];
     for(int i = 0; i < noOfLevels; i++){
-        paused = false;
         levels[i] = nullptr;
     }
-    for(int i = 0; i < noOfLevels; i++){
-        if(i == 0)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard.jpg";
-        else if(i == 1)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard.jpg";
-        else if(i == 2)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard.jpg";
-        else if(i == 3)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard4.jpg";
-        else if(i == 4)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard4.jpg";
-        else if(i == 5)
-            levelBackgrounds[i] = "..\\assets\\Background\\Frontyard5.png";
-    }
+    
+    levelBackgrounds[0] = "..\\assets\\Background\\Frontyard.jpg";
+    levelBackgrounds[1] = "..\\assets\\Background\\Frontyard.jpg";
+    levelBackgrounds[2] = "..\\assets\\Background\\Frontyard.jpg";
+    levelBackgrounds[3] = "..\\assets\\Background\\Frontyard4.jpg";
+    levelBackgrounds[4] = "..\\assets\\Background\\Frontyard4.jpg";
+    levelBackgrounds[5] = "..\\assets\\Background\\Frontyard5.png";
 
-    font.loadFromFile("..\\assets\\fonts\\VampireWars.ttf");
+
+    this->topPlayer = -1;
+    this->playerCountIndex =0;
+    font.loadFromFile("..\\assets\\fonts\\HouseofTerror Regular.ttf");
     PlayerText.setFont(font);
     PlayerText.setString("");
     PlayerText.setCharacterSize(24);
-    PlayerText.setFillColor(Color::Black);
+    PlayerText.setFillColor(Color(32, 131, 32));
     PlayerText.setPosition(700, 25);
 
     LoadPlayers();
@@ -45,10 +41,13 @@ void GameScreen::start() {
     }
     else if(currentLevel > 0 && currentLevel < noOflevels){
         for(int i = 0; i < currentLevel; i++){
+            //if level is completed then move to next level and set scores and delete previous level
             if(levels[i] != nullptr && levels[i]->getOn() == false){
-                cout << currentLevel << endl;
+
                 currentPlayer.setScore(levels[i]->getScore());
+                
                 AddLevel(currentLevel + 1);
+                
                 if(players[4].getScore() < currentPlayer.getScore()){
                     bool found = false;
                     for(int i = 0; i < 5; i++){
@@ -102,30 +101,60 @@ void GameScreen::LoadPlayers(){
     SortPlayers();
 }
 void GameScreen::AddLevel(int level) {
+    int NO_OF_ZOMBIES = 10;
+    int NO_OF_WAVES = 0;
+    int ALLOWED_PLANTS = 5;   //types of plants
+    int NO_OF_LANES = 5;
+    int ALLOWED_ZOMBIES = 5;  //types of zombies
     if (level == 1) {
-        levels[0] = new Level1(levelBackgrounds[0], 6, 0, 1, 5, 1);
-        levels[0]->setOn(true);
+        NO_OF_ZOMBIES = 6;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 1;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 1;
+        levels[level - 1] = new Level1(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 2) {
-        levels[1] = new Level2(levelBackgrounds[1], 10, 0, 2, 5, 4);
-        levels[1]->setOn(true);
+        NO_OF_ZOMBIES = 10;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 2;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 2;
+        levels[level - 1] = new Level2(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 3) {
-        levels[2] = new Level3(levelBackgrounds[2], 10, 0, 3, 5, 4);
-        levels[2]->setOn(true);
+        NO_OF_ZOMBIES = 10;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 3;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 4;
+        levels[level - 1] = new Level3(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 4) {
-        levels[3] = new Level4(levelBackgrounds[3], 15, 0, 5, 5, 4);
-        levels[3]->setOn(true);
+        NO_OF_ZOMBIES = 15;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 4;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 4;
+        levels[level - 1] = new Level4(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 5) {
-        levels[4] = new Level5(levelBackgrounds[4], 15, 0, 6, 5, 4);
-        levels[4]->setOn(true);
+        NO_OF_ZOMBIES = 15;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 5;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 4;
+        levels[level - 1] = new Level5(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 6) {
-        levels[5] = new Level6(levelBackgrounds[5], 15, 0, 7, 5, 4);
-        levels[5]->setOn(true);
+        NO_OF_ZOMBIES = 20;
+        NO_OF_WAVES = 0;
+        ALLOWED_PLANTS = 5;
+        NO_OF_LANES = 5;
+        ALLOWED_ZOMBIES = 5;
+        levels[level - 1] = new Level5(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
+    levels[level - 1]->setOn(true);    
     levels[level - 1]->setScore(currentPlayer.getScore());
     currentLevel++;
 }
@@ -148,12 +177,11 @@ int GameScreen::handleInput(Event e, RenderWindow& window) {
             return 0;
         }
     }
-
-
+    //if game is just loaded and player has to enter name
     if(!previousState){
         if(e.type == Event::KeyPressed && e.key.code == Keyboard::Enter){
             if(!entpressed){
-                entpressed = true;
+                this->entpressed = true;
                 return -1;
             }
             for(int i = 0; i < playerCountIndex; i++){
@@ -179,13 +207,14 @@ int GameScreen::handleInput(Event e, RenderWindow& window) {
 }
 void GameScreen::Draw(RenderWindow& window) {
     if(!previousState){
-        Background.Draw(window);
+        // Background.Draw(window);
         NameBack.Draw(window);
         currentPlayer.Draw(window);
         return;
-        scoreBoard.Draw(window);
+        // scoreBoard.Draw(window);
     }
     start();
+
     for (int i = 0; i < currentLevel; i++) {
         if (levels[i] != nullptr && levels[i]->getOn() == true)
             levels[i]->Draw(window);
@@ -209,72 +238,72 @@ void GameScreen::Draw(RenderWindow& window) {
     }
 }
 
-void GameScreen::serialize(ostream& file) {
-    cout << "GameScreen serializing\n";
+// void GameScreen::serialize(ostream& file) {
+//     cout << "GameScreen serializing\n";
     
-    file.write(reinterpret_cast<const char*>(&noOflevels), sizeof(noOflevels));
-    file.write(reinterpret_cast<const char*>(&currentLevel), sizeof(currentLevel));
-    for (int i = 0; i < noOflevels; i++) {
-        if (levels[i] != nullptr ) {
-            levels[i]->serialize(file);
-        }
-    }
-    file.write(reinterpret_cast<const char*>(&previousState), sizeof(previousState));
-    file.write(reinterpret_cast<const char*>(&paused), sizeof(paused));
-    file.write(reinterpret_cast<const char*>(&entpressed), sizeof(entpressed));
-    NameBack.serialize(file);
-    Badge.serialize(file);
-    currentPlayer.serialize(file);
-    cout << "GameScreen serialized\n";
-}
-void GameScreen::deserialize(istream& file) {
-    file.read(reinterpret_cast<char*>(&noOflevels), sizeof(noOflevels));
-    file.read(reinterpret_cast<char*>(&currentLevel), sizeof(currentLevel));
-    if(currentLevel - 1 == 0){
-        AddLevel(1);
-    }
-    else if(currentLevel - 1 == 1){
-        AddLevel(2);
-    }
-    else if(currentLevel - 1 == 2){
-        AddLevel(3);
-    }
-    else if(currentLevel - 1 == 3){
-        AddLevel(4);
-    }
-    else if(currentLevel - 1 == 4){
-        AddLevel(5);
-    }
-    else if(currentLevel - 1 == 5){
-        AddLevel(6);
-    }
-        levels[currentLevel-1]->deserialize(file);
-    file.read(reinterpret_cast<char*>(&previousState), sizeof(previousState));
-    file.read(reinterpret_cast<char*>(&paused), sizeof(paused));
-    file.read(reinterpret_cast<char*>(&entpressed), sizeof(entpressed));
-    NameBack.deserialize(file);
-    Badge.deserialize(file);
-    currentPlayer.deserialize(file);
-}
+//     file.write(reinterpret_cast<const char*>(&noOflevels), sizeof(noOflevels));
+//     file.write(reinterpret_cast<const char*>(&currentLevel), sizeof(currentLevel));
+//     for (int i = 0; i < noOflevels; i++) {
+//         if (levels[i] != nullptr ) {
+//             levels[i]->serialize(file);
+//         }
+//     }
+//     file.write(reinterpret_cast<const char*>(&previousState), sizeof(previousState));
+//     file.write(reinterpret_cast<const char*>(&paused), sizeof(paused));
+//     file.write(reinterpret_cast<const char*>(&entpressed), sizeof(entpressed));
+//     NameBack.serialize(file);
+//     Badge.serialize(file);
+//     currentPlayer.serialize(file);
+//     cout << "GameScreen serialized\n";
+// }
+// void GameScreen::deserialize(istream& file) {
+//     file.read(reinterpret_cast<char*>(&noOflevels), sizeof(noOflevels));
+//     file.read(reinterpret_cast<char*>(&currentLevel), sizeof(currentLevel));
+//     if(currentLevel - 1 == 0){
+//         AddLevel(1);
+//     }
+//     else if(currentLevel - 1 == 1){
+//         AddLevel(2);
+//     }
+//     else if(currentLevel - 1 == 2){
+//         AddLevel(3);
+//     }
+//     else if(currentLevel - 1 == 3){
+//         AddLevel(4);
+//     }
+//     else if(currentLevel - 1 == 4){
+//         AddLevel(5);
+//     }
+//     else if(currentLevel - 1 == 5){
+//         AddLevel(6);
+//     }
+//         levels[currentLevel-1]->deserialize(file);
+//     file.read(reinterpret_cast<char*>(&previousState), sizeof(previousState));
+//     file.read(reinterpret_cast<char*>(&paused), sizeof(paused));
+//     file.read(reinterpret_cast<char*>(&entpressed), sizeof(entpressed));
+//     NameBack.deserialize(file);
+//     Badge.deserialize(file);
+//     currentPlayer.deserialize(file);
+// }
 
-void GameScreen::saveToFile(string filename) {
-    ofstream outFile(filename, std::ios::binary);
-    if(!outFile.is_open()){
-        cout << "File not opened\n";
-        ofstream newfile(filename, std::ios::binary);
-       serialize(newfile);
-        newfile.close();
-    }
-    else 
-        serialize(outFile);
-    outFile.close();
-}
-void GameScreen::loadFromFile(string filename) {
-    ifstream inFile(filename, std::ios::binary);
-    cout << "Loading from file\n";
-    deserialize(inFile);
-    inFile.close();
-}
+// void GameScreen::saveToFile(string filename) {
+//     ofstream outFile(filename, std::ios::binary);
+//     if(!outFile.is_open()){
+//         cout << "File not opened\n";
+//         ofstream newfile(filename, std::ios::binary);
+//        serialize(newfile);
+//         newfile.close();
+//     }
+//     else 
+//         serialize(outFile);
+//     outFile.close();
+// }
+// void GameScreen::loadFromFile(string filename) {
+//     ifstream inFile(filename, std::ios::binary);
+//     cout << "Loading from file\n";
+//     deserialize(inFile);
+//     inFile.close();
+// }
 
 GameScreen::~GameScreen(){
     for (int i = 0 ; i < currentLevel; i++){

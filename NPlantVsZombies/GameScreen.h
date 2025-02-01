@@ -17,16 +17,21 @@ protected:
     int currentLevel;
     Level** levels;
     string levelBackgrounds[6];
+
     bool previousState;
     bool paused;
     bool entpressed;
+    
     Player players[5];
     int playerCountIndex;
     Player currentPlayer;
-    ScoreBoard scoreBoard;
     int topPlayer;
-    MySprite NameBack;
-    MySprite Badge;
+    
+    // ScoreBoard scoreBoard;
+    
+    const string NAME_ENTRY_PATH = "..\\assets\\Background\\ForNameEntry1.png";
+    MySprite NameBack;  //Background for name entry
+    MySprite Badge;    //Badge for top 3 players
 
     Font font;
     Text PlayerText;
@@ -35,21 +40,24 @@ public:
     ~GameScreen();
 
     void AddLevel(int level);
+    void start();   //function to manage start and end of levels
+    
     void setPaused(bool paused);
     bool getPaused();
     void setCurrentLevel(int level);
     int getCurrentLevel();
     void setEntPressed(bool entpressed);
+
     void LoadPlayers();
     void SortPlayers();
-    void start();
+    
     virtual int handleInput(Event e, RenderWindow& window);
     virtual void Draw(RenderWindow& window);    
 
-    void serialize(ostream& file);
-    void deserialize(istream& file);
-    void saveToFile(string filename);
-    void loadFromFile(string filename);
+    // void serialize(ostream& file);
+    // void deserialize(istream& file);
+    // void saveToFile(string filename);
+    // void loadFromFile(string filename);
 
 };
 #endif

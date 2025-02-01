@@ -1,15 +1,2 @@
-﻿  Executor.cpp
-  Main.cpp
-  MenuScreen.cpp
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(15,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(15,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(21,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(21,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(27,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(27,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(33,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(33,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(79,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\MenuScreen.cpp(83,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
+﻿  Player.cpp
   NPlantVsZombies.vcxproj -> F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\x64\Debug\NPlantVsZombies.exe
