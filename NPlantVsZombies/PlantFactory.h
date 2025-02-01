@@ -26,6 +26,8 @@ protected:
     InventPlant** Cards;
     Plants** plants;
     Grid* grid;
+
+    //const 
 public:
     PlantFactory(int allowedPlants, Grid*& grid );
     ~PlantFactory();
@@ -46,8 +48,8 @@ public:
     int handleInput(Event e, RenderWindow& window, int sunCount);
     void Draw(RenderWindow& window);
 
-    void serialize(ostream& file);
-    void deserialize(istream& file);    
+    // void serialize(ostream& file);
+    // void deserialize(istream& file);    
 
 };
 #endif

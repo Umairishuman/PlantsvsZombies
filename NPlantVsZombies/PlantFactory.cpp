@@ -2,10 +2,22 @@
 PlantFactory::PlantFactory(int allowedPlants, Grid*& grid):InventoryBack("..\\assets\\Inventory-GameScreen\\ChooserBackground.png", 0, 0),SelectorSprite("..\\assets\\Spritesheets\\SelectionFrame1.png", 70, 5){
     this->grid = grid;
     this->allowedPlants = allowedPlants;
-    this->lane = new Lane(8, 0, 70, 5, 69, 50,false);
+    //intializing lane
+    int NO_OF_BLOCKS = 8;
+    int LANE_NO = 0;
+    int LANE_START_X = 70;
+    int LANE_START_Y = 5;
+    int LANE_WIDTH = 69;
+    int LANE_HEIGHT = 50;
+    int LANE_BLOCK_WIDTH = 69;
+    bool isWater = false;
+    this->lane = new Lane(NO_OF_BLOCKS, LANE_NO, LANE_START_X, LANE_START_Y, LANE_WIDTH, LANE_HEIGHT, isWater);
+    
     Cards = new InventPlant*[allowedPlants];
-    plants = new Plants*[45];
-    for (int i = 0; i < 45; i++){
+    
+    const int MAX_NO_OF_PLANTS = 45;
+    plants = new Plants*[MAX_NO_OF_PLANTS];
+    for (int i = 0; i < MAX_NO_OF_PLANTS; i++){
         plants[i] = nullptr;
     }
     currentPlant = 0;
@@ -163,68 +175,68 @@ void PlantFactory::Draw(RenderWindow& window){
     }
 }
 
-void PlantFactory::serialize(ostream& file){
-    file.write(reinterpret_cast<const char*>(&allowedPlants), sizeof(allowedPlants));
-    file.write(reinterpret_cast<const char*>(&currentPlant), sizeof(currentPlant));
-    file.write(reinterpret_cast<const char*>(&currentNoOfplants), sizeof(currentNoOfplants));
-    SelectorSprite.serialize(file);
-    InventoryBack.serialize(file);
-    lane->serialize(file);
-    for(int i = 0; i < allowedPlants; i++){
-        Cards[i]->serialize(file);
-    }
-    for(int i = 0; i < currentPlant; i++){
-        if(plants[i] != nullptr){
-            plants[i]->serialize(file);
-        }
-    }
+// void PlantFactory::serialize(ostream& file){
+//     file.write(reinterpret_cast<const char*>(&allowedPlants), sizeof(allowedPlants));
+//     file.write(reinterpret_cast<const char*>(&currentPlant), sizeof(currentPlant));
+//     file.write(reinterpret_cast<const char*>(&currentNoOfplants), sizeof(currentNoOfplants));
+//     SelectorSprite.serialize(file);
+//     InventoryBack.serialize(file);
+//     lane->serialize(file);
+//     for(int i = 0; i < allowedPlants; i++){
+//         Cards[i]->serialize(file);
+//     }
+//     for(int i = 0; i < currentPlant; i++){
+//         if(plants[i] != nullptr){
+//             plants[i]->serialize(file);
+//         }
+//     }
 
-}
-void PlantFactory::deserialize(istream& file){
-    file.read(reinterpret_cast<char*>(&allowedPlants), sizeof(allowedPlants));
-    file.read(reinterpret_cast<char*>(&currentPlant), sizeof(currentPlant));
-    file.read(reinterpret_cast<char*>(&currentNoOfplants), sizeof(currentNoOfplants));
-    SelectorSprite.deserialize(file);
-    InventoryBack.deserialize(file);
-    Lane *lane = new Lane(8, 0, 70, 5, 69, 50,false);
-    lane->deserialize(file);
-    Cards = new InventPlant*[allowedPlants];
-    for(int i = 0; i < allowedPlants; i++){
-        Cards[i] = new InventPlant("..\\assets\\Inventory-GameScreen\\ChooserBackground.png", "..\\assets\\Inventory-GameScreen\\ChooserBackground.png", 0, 0, 0, 0, 0, 0);
-        Cards[i]->deserialize(file);
-    }
-    plants = new Plants*[45];
-    for(int i = 0; i < currentNoOfplants; i++){
-        int type;
-        file.read(reinterpret_cast<char*>(&type), sizeof(type));
-        switch (type){
-        case 1:
-            plants[i] = new Peashooter(100, nullptr, 100, 3, "..\\assets\\Spritesheets\\peashooter1.png");
-            break;
-        case 2:
-            plants[i] = new Repeater(200, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\Repeater.png");
-            break;
-        case 3:
-            plants[i] = new PuffShroom(175, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\FumeShroom.png");
-            break;
-        case 4:
-            plants[i] = new SnowPea(175, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\snowpea.png");
-            break;
-        case 5:
-            plants[i] = new Sunflower(50, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\sunflower.png");
-            break;
-        case 6:
-            plants[i] = new Wallnut(200, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\Wallnut1.png");
-            break;
-        case 7:
-            plants[i] = new CherryBomb(150, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\cherrybomb1.png");
-            break;
-        default:
-            break;
-        }
-        plants[i]->deserialize(file);
-    }
-}
+// }
+// void PlantFactory::deserialize(istream& file){
+//     file.read(reinterpret_cast<char*>(&allowedPlants), sizeof(allowedPlants));
+//     file.read(reinterpret_cast<char*>(&currentPlant), sizeof(currentPlant));
+//     file.read(reinterpret_cast<char*>(&currentNoOfplants), sizeof(currentNoOfplants));
+//     SelectorSprite.deserialize(file);
+//     InventoryBack.deserialize(file);
+//     Lane *lane = new Lane(8, 0, 70, 5, 69, 50,false);
+//     lane->deserialize(file);
+//     Cards = new InventPlant*[allowedPlants];
+//     for(int i = 0; i < allowedPlants; i++){
+//         Cards[i] = new InventPlant("..\\assets\\Inventory-GameScreen\\ChooserBackground.png", "..\\assets\\Inventory-GameScreen\\ChooserBackground.png", 0, 0, 0, 0, 0, 0);
+//         Cards[i]->deserialize(file);
+//     }
+//     plants = new Plants*[45];
+//     for(int i = 0; i < currentNoOfplants; i++){
+//         int type;
+//         file.read(reinterpret_cast<char*>(&type), sizeof(type));
+//         switch (type){
+//         case 1:
+//             plants[i] = new Peashooter(100, nullptr, 100, 3, "..\\assets\\Spritesheets\\peashooter1.png");
+//             break;
+//         case 2:
+//             plants[i] = new Repeater(200, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\Repeater.png");
+//             break;
+//         case 3:
+//             plants[i] = new PuffShroom(175, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\FumeShroom.png");
+//             break;
+//         case 4:
+//             plants[i] = new SnowPea(175, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\snowpea.png");
+//             break;
+//         case 5:
+//             plants[i] = new Sunflower(50, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\sunflower.png");
+//             break;
+//         case 6:
+//             plants[i] = new Wallnut(200, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\Wallnut1.png");
+//             break;
+//         case 7:
+//             plants[i] = new CherryBomb(150, nullptr, 100, 7.5, "..\\assets\\Spritesheets\\cherrybomb1.png");
+//             break;
+//         default:
+//             break;
+//         }
+//         plants[i]->deserialize(file);
+//     }
+// }
 
 
 PlantFactory::~PlantFactory(){

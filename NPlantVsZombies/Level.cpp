@@ -7,12 +7,14 @@ Level::Level(string backPath, int noOfZombies, int noOfWaves, int allowedPlants,
     this->lives = 3;
     this->score = 0;
     this->allowedZombies = allowedZombies;
+
     //grid for the level(same for all levels)
     const int GRID_START_X = 255;
     const int GRID_START_Y = 80;
     const int GRID_BLOCK_WIDTH = 101;
     const int NO_OF_LANES = 5;
     grid = new Grid(NO_OF_LANES, GRID_START_X, GRID_START_Y, GRID_BLOCK_WIDTH);
+    
     //for plant selection
     selection = false;
     selector = -1;

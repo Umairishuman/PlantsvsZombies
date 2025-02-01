@@ -13,7 +13,7 @@ protected:
     Clock animationClock;
 
 public:
-    AnimateMySprite(string path = "", int x = 0, int y = 0, int noOfframes = 0, int width = 0, int length = 0);
+    AnimateMySprite(string path = "", int x = 0, int y = 0, int noOfframes = 0, int width = 0, int length = 0, int AnimateSpeed = 15);
     void animate(RenderWindow &window);
 
     void setNoOfFrames(int noOfframes);
@@ -27,7 +27,7 @@ public:
     int getCurrentFrame();
     int getAnimateSpeed();
 
-    void serialize(ostream& file);
-    void deserialize(istream& file);
+    // void serialize(ostream& file);
+    // void deserialize(istream& file);
 };
 #endif

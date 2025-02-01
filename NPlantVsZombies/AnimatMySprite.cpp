@@ -1,10 +1,11 @@
 #include "AnimatMySprite.h"
-AnimateMySprite::AnimateMySprite(string path, int x, int y, int noOfframes, int width, int length):MySprite(path, x, y), currentPosition(0, 0){
+AnimateMySprite::AnimateMySprite(string path, int x, int y, int noOfframes, int width, int length, int AnimateSpeed):MySprite(path, x, y), currentPosition(0, 0){
     this->currentframe = 0;
     this->noOfframes = noOfframes;
     this->width = width;    
     this->length = length;
-    this->AnimateSpeed = 15;
+    this->AnimateSpeed = AnimateSpeed;
+
 }
 
 void AnimateMySprite::setNoOfFrames(int noOfframes){
@@ -52,21 +53,21 @@ void AnimateMySprite::animate(RenderWindow &window){
         currentframe++;
     }
 }
-void AnimateMySprite::serialize(ostream& file){
-    MySprite::serialize(file);
-    file.write(reinterpret_cast<const char*>(&noOfframes), sizeof(noOfframes));
-    file.write(reinterpret_cast<const char*>(&width), sizeof(width));
-    file.write(reinterpret_cast<const char*>(&length), sizeof(length));
-    file.write(reinterpret_cast<const char*>(&currentframe), sizeof(currentframe));
-    file.write(reinterpret_cast<const char*>(&AnimateSpeed), sizeof(AnimateSpeed));
-    currentPosition.serialize(file);
-}
-void AnimateMySprite::deserialize(istream& file){
-    MySprite::deserialize(file);
-    file.read(reinterpret_cast<char*>(&noOfframes), sizeof(noOfframes));
-    file.read(reinterpret_cast<char*>(&width), sizeof(width));
-    file.read(reinterpret_cast<char*>(&length), sizeof(length));
-    file.read(reinterpret_cast<char*>(&currentframe), sizeof(currentframe));
-    file.read(reinterpret_cast<char*>(&AnimateSpeed), sizeof(AnimateSpeed));
-    currentPosition.deserialize(file);
-}
+// void AnimateMySprite::serialize(ostream& file){
+//     MySprite::serialize(file);
+//     file.write(reinterpret_cast<const char*>(&noOfframes), sizeof(noOfframes));
+//     file.write(reinterpret_cast<const char*>(&width), sizeof(width));
+//     file.write(reinterpret_cast<const char*>(&length), sizeof(length));
+//     file.write(reinterpret_cast<const char*>(&currentframe), sizeof(currentframe));
+//     file.write(reinterpret_cast<const char*>(&AnimateSpeed), sizeof(AnimateSpeed));
+//     currentPosition.serialize(file);
+// }
+// void AnimateMySprite::deserialize(istream& file){
+//     MySprite::deserialize(file);
+//     file.read(reinterpret_cast<char*>(&noOfframes), sizeof(noOfframes));
+//     file.read(reinterpret_cast<char*>(&width), sizeof(width));
+//     file.read(reinterpret_cast<char*>(&length), sizeof(length));
+//     file.read(reinterpret_cast<char*>(&currentframe), sizeof(currentframe));
+//     file.read(reinterpret_cast<char*>(&AnimateSpeed), sizeof(AnimateSpeed));
+//     currentPosition.deserialize(file);
+// }
