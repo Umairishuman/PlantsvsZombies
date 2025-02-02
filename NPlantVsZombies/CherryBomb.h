@@ -10,6 +10,10 @@ public:
     ~CherryBomb();
     virtual void CollisionControl(Zombie** zombie, int currentZombie) ;
     void Draw(RenderWindow& window);
+    Clock* blastClock;
+
+    Sound soundBlast;
+    SoundBuffer bufferBlast;
 };
 #endif
 

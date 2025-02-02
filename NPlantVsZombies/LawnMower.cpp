@@ -2,6 +2,9 @@
 LawnMower::LawnMower(int x, int y, string path) :LawnMowerSprite(path, x, y) {
     used = false;
     active = false;
+    bufferMower.loadFromFile("..\\assets\\music\\SFX lawnmower.wav");
+    soundMower.setBuffer(bufferMower);
+    soundMower.setVolume(50);
 }   
 LawnMower::~LawnMower() {
 }
@@ -19,6 +22,9 @@ bool LawnMower::getUsed(){
 }
 void LawnMower::move() {
     if (active) {
+        if(soundMower.getStatus() != Sound::Status::Playing){
+            soundMower.play();
+        }
         if(LawnMowerSprite.getCoordinates().getX()> 1000){
             used = true;
 

@@ -25,7 +25,7 @@ Level::Level(string backPath, int noOfZombies, int noOfWaves, int allowedPlants,
     for(int i = 0; i < noOflanes; i++){
         lawnMower[i] = new LawnMower(160, 80 + i*101, "..\\assets\\Spritesheets\\lawnmower.png");
     }
-    this->sunAmount = 100;  //starting value for sun
+    this->sunAmount = 1000;  //starting value for sun
     GameOver = false;
 
 

@@ -10,6 +10,9 @@ protected:
     bool used;
     bool active;
 
+    Sound soundMower;
+    SoundBuffer bufferMower;
+
 public:
     LawnMower(int x = 0, int y = 0, string path = "");
     ~LawnMower();

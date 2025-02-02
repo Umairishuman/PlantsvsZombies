@@ -55,9 +55,11 @@ void FootballZombie::move(){
             direction = true;
         if(ZombieSprite.getCoordinates().getX() == 450)
             direction = false;
-        if(!direction)
-            ZombieSprite.setCoordinates((int)ZombieSprite.getCoordinates().getX() - 1 , (int)ZombieSprite.getCoordinates().getY());
-        else
-            ZombieSprite.setCoordinates((int)ZombieSprite.getCoordinates().getX() + 1 , (int)ZombieSprite.getCoordinates().getY());
+        ZombieSprite.setCoordinates((int)ZombieSprite.getCoordinates().getX() - 1, (int)ZombieSprite.getCoordinates().getY());
+
+        //if(!direction)
+            //ZombieSprite.setCoordinates((int)ZombieSprite.getCoordinates().getX() - 1 , (int)ZombieSprite.getCoordinates().getY());
+        //else
+            //ZombieSprite.setCoordinates((int)ZombieSprite.getCoordinates().getX() + 1, (int)ZombieSprite.getCoordinates().getY());
     }
 }

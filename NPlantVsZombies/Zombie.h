@@ -21,6 +21,7 @@ protected:
     bool headfallen;
     AnimateMySprite Headfall;
     bool hasReached;
+    bool headHasFallenOnce;
 
     SoundBuffer groanBuffer;
     Sound groan;

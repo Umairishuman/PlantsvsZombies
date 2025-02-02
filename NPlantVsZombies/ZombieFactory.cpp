@@ -40,14 +40,14 @@ void ZombieFactory::SpawnZombie(bool Summon){
         ZombiesSpawned++;
         int y = (int)grid->getLanes()[Lane]->getBlocks()[0]->getCoordinates().getY();
         if(zombieNo == 0)
-            zombie = new SimpleZombie("..\\assets\\Spritesheets\\nZombWalk.png",Summon?800:1000, y - 45, 22, 166, 144, 170, 11, score);
+            zombie = new SimpleZombie("..\\assets\\Spritesheets\\nZombWalk.png",Summon?800:900, y - 45, 22, 166, 144, 120, 5, score);
         if(zombieNo ==1 )
-            zombie = new FootballZombie("..\\assets\\Spritesheets\\Conehead.png", Summon?800:1000, y - 45, 21, 166, 144, 170, 22, score);
+            zombie = new FootballZombie("..\\assets\\Spritesheets\\Conehead.png", Summon?800:900, y - 45, 21, 166, 144, 120, 22, score);
         if(zombieNo >= 2){
-            zombie = new DancingZombie("..\\assets\\Spritesheets\\zombiedance.png",Summon?800:1000, y - 45, 10, 166, 144, 140, 7, score);
+            zombie = new DancingZombie("..\\assets\\Spritesheets\\zombiedance.png",Summon?800:900, y - 45, 10, 166, 144, 140, 7, score);
         }
         if(zombieNo == 3){
-            zombie = new FlyingZombies("..\\assets\\Spritesheets\\FlyingZOmbe.png", Summon?800:1000, y - 45, 8, 106, 144, 170, 11, score);
+            zombie = new FlyingZombies("..\\assets\\Spritesheets\\FlyingZOmbe.png", Summon?800:900, y - 45, 8, 106, 144, 170, 11, score);
         }
 
         this->AddZombie(zombie);   

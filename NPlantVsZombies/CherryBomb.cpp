@@ -9,10 +9,18 @@ CherryBomb::CherryBomb(int price, Block* block, int health, float cooldownTime, 
     image.setAnimateSpeed(100);
 
     type = 7;
+
+    if(!bufferBlast.loadFromFile("..\\assets\\music\\cherrybomb.wav")){
+        cout << "Error loading cherry bomb sound" << endl;
+    }
+    soundBlast.setBuffer(bufferBlast);
+    soundBlast.setVolume(50);
+    soundBlast.setLoop(false);
+    blastClock = nullptr;
 }
 
 void CherryBomb::CollisionControl(Zombie** zombie, int currentZombie){
-    if(this->clock.getElapsedTime().asSeconds() > 1 && killed == false){
+    if(this->clock.getElapsedTime().asMilliseconds() > 1000 && killed == false ){
         for(int i = 0; i < currentZombie; i++){
             if(zombie[i]!= nullptr && this->killed == false){
                 int x1 = (int)zombie[i]->getZombieSprite().getCoordinates().getX();
@@ -26,9 +34,17 @@ void CherryBomb::CollisionControl(Zombie** zombie, int currentZombie){
                 }
             }
         }
-        killed = true;
-        this->block->setAvailable(true);
-
+        if(soundBlast.getStatus() != Sound::Status::Playing){
+            soundBlast.play();
+        }
+        if(!blastClock){
+            blastClock = new Clock();
+        }
+       
+        if(blastClock->getElapsedTime().asMilliseconds() > 300 ){
+            this->killed = true;
+            this->block->setAvailable(true);
+        }
     }
 }
 void CherryBomb::Draw(RenderWindow& window){
@@ -37,4 +53,6 @@ void CherryBomb::Draw(RenderWindow& window){
 
 }
 CherryBomb::~CherryBomb(){
+    if(blastClock)
+        delete blastClock;
 }

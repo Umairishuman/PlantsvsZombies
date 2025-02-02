@@ -46,7 +46,7 @@ void PlantFactory::addPlant(int plantno, Block *block){
                 plants[currentPlant] = new PuffShroom(200, block, 100, 7.5, "..\\assets\\Spritesheets\\FumeShroom.png");
             }
             if(plantno == 1){
-                plants[currentPlant] = new Sunflower(100, block, 100, 3, "..\\assets\\Spritesheets\\sunflower.png");
+                plants[currentPlant] = new Sunflower(50, block, 100, 3, "..\\assets\\Spritesheets\\sunflower.png");
             }
             currentPlant++;
             currentNoOfplants++;

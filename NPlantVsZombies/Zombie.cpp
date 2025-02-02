@@ -5,8 +5,10 @@ Zombie::Zombie(string path, int x, int y, int noOfframes, int width, int length,
     this->speed = speed;
     this->hits = 0;
     this->killed = false;
+    type = 1;
 
     this->headfallen = false;
+    this->headHasFallenOnce = false;
     this->falling = false;
     blasted = false;
     this->eating = false;
@@ -88,7 +90,6 @@ void Zombie::headFall(){
 void Zombie::BodyFall(){
     ZombieSprite.setPath("..\\assets\\Spritesheets\\ZomvbieDie.png");
     ZombieSprite.setNoOfFrames(16);
-    
     ZombieSprite.setWidth(166);
     ZombieSprite.setLength(144);
     ZombieSprite.setAnimateSpeed(80);
@@ -96,7 +97,6 @@ void Zombie::BodyFall(){
 void Zombie::blast(){
     ZombieSprite.setPath("..\\assets\\Spritesheets\\Burnt.png");
     ZombieSprite.setNoOfFrames(25);
-    
     ZombieSprite.setWidth(166);
     ZombieSprite.setLength(144);
     blasted = true;
@@ -141,7 +141,7 @@ void Zombie::move(){
         this->hitOpacity = false;
         this->ZombieSprite.setOpacity(0.9f);
     }
-    if(this->hits == killHits-1 && headfallen == false){
+    if (this->hits == killHits - 1 && headfallen == false && headHasFallenOnce == false) {
         Headfall.setCoordinates((int)ZombieSprite.getCoordinates().getX()+30, (int)ZombieSprite.getCoordinates().getY());
         headfallen = true;
         headFall();
@@ -173,6 +173,7 @@ void Zombie::Draw(RenderWindow& window){
     if(headfallen){
         if(Headfall.getCurrentFrame() == Headfall.getNoOfFrames()-1){
             headfallen = false;
+            headHasFallenOnce = true;
         }
         Headfall.animate(window);
     }

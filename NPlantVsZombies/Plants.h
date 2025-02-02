@@ -11,9 +11,11 @@ protected:
     int price;
     int health;
     Clock clock;
+
     bool killed;
     bool beingEaten;
     int type;
+
 public:
     Plants(int price = 0, Block *block = nullptr, int health = 0, float cooldownTime = 7.5, string path = "");
     virtual ~Plants();

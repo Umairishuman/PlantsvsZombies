@@ -138,16 +138,10 @@
     <ClCompile Include="InstructionScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreBoard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EndScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StartScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -272,16 +266,10 @@
     <ClInclude Include="InstructionScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreBoard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EndScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StartScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

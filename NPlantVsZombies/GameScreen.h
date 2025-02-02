@@ -9,7 +9,6 @@
 #include"Level5.h"
 #include"Level6.h"
 #include"Player.h"
-#include"ScoreBoard.h"
 class GameScreen : public Screen{
 protected:
 
