@@ -11,6 +11,26 @@ ZombieFactory::ZombieFactory(int noOfZombies ,int allowedZombies, Grid*& grid, i
     aliveZombies = 0;
     ZombiesSpawned = 0;
 
+    spawningTime = 10;
+
+}
+
+void ZombieFactory::decrementSpawnTime() {
+   /* if (this->spawningTime <= 2) {
+        spawningTime = 1;
+    }
+    else
+        this->spawningTime = this->spawningTime - 1;*/
+
+    if (spawningTime > 2) {
+        // Reduce spawning time by a small, controlled amount
+        spawningTime -= 0.5;
+    }
+    else {
+        // Set a minimum spawn time to avoid excessive spawning
+        spawningTime = 2;
+    }
+
 }
 
 void ZombieFactory::setCurrentZombie(int currentZombie){
@@ -35,7 +55,7 @@ int ZombieFactory::selectZombie(){
 void ZombieFactory::SpawnZombie(bool Summon){
     int Lane = selectLane();
     int zombieNo = selectZombie();
-    if((ZombieSpawnClock.getElapsedTime().asSeconds() > 10 || Summon) && currentZombie < noOfZombies && ZombiesSpawned < noOfZombies){
+   /* if((ZombieSpawnClock.getElapsedTime().asSeconds() > spawningTime || Summon) && currentZombie < noOfZombies && ZombiesSpawned < noOfZombies){
         Zombie* zombie = nullptr;
         ZombiesSpawned++;
         int y = (int)grid->getLanes()[Lane]->getBlocks()[0]->getCoordinates().getY();
@@ -50,9 +70,42 @@ void ZombieFactory::SpawnZombie(bool Summon){
             zombie = new FlyingZombies("..\\assets\\Spritesheets\\FlyingZOmbe.png", Summon?800:900, y - 45, 8, 106, 144, 170, 11, score);
         }
 
-        this->AddZombie(zombie);   
+        this->AddZombie(zombie);  
+        if(SpawnTimeClock.getElapsedTime().asSeconds() > 3)
+            decrementSpawnTime();
+        ZombieSpawnClock.restart();
+    }*/
+
+    if ((ZombieSpawnClock.getElapsedTime().asSeconds() > spawningTime || Summon) && currentZombie < noOfZombies && ZombiesSpawned < noOfZombies) {
+        Zombie* zombie = nullptr;
+        ZombiesSpawned++;
+        int y = (int)grid->getLanes()[Lane]->getBlocks()[0]->getCoordinates().getY();
+
+        switch (zombieNo) {
+        case 0:
+            zombie = new SimpleZombie("..\\assets\\Spritesheets\\nZombWalk.png", Summon ? 800 : 900, y - 45, 22, 166, 144, 120, 5, score);
+            break;
+        case 1:
+            zombie = new FootballZombie("..\\assets\\Spritesheets\\Conehead.png", Summon ? 800 : 900, y - 45, 21, 166, 144, 120, 22, score);
+            break;
+        case 2:
+            zombie = new DancingZombie("..\\assets\\Spritesheets\\zombiedance.png", Summon ? 800 : 900, y - 45, 10, 166, 144, 140, 7, score);
+            break;
+        case 3:
+            zombie = new FlyingZombies("..\\assets\\Spritesheets\\FlyingZOmbe.png", Summon ? 800 : 900, y - 45, 8, 106, 144, 170, 11, score);
+            break;
+        }
+
+        this->AddZombie(zombie);
+
+        if (SpawnTimeClock.getElapsedTime().asSeconds() > 10) {
+            decrementSpawnTime();
+            SpawnTimeClock.restart();
+        }
+
         ZombieSpawnClock.restart();
     }
+
 }
 void ZombieFactory::AddZombie(Zombie* zombie){
     for(int i = 0; i < currentZombie; i++){

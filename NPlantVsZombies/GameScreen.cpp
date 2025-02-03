@@ -107,11 +107,11 @@ void GameScreen::AddLevel(int level) {
     int NO_OF_LANES = 5;
     int ALLOWED_ZOMBIES = 5;  //types of zombies
     if (level == 1) {
-        NO_OF_ZOMBIES = 6;
+        NO_OF_ZOMBIES = 16;
         NO_OF_WAVES = 0;
         ALLOWED_PLANTS = 7;
         NO_OF_LANES = 5;
-        ALLOWED_ZOMBIES = 2;
+        ALLOWED_ZOMBIES = 3;
         levels[level - 1] = new Level1(levelBackgrounds[level - 1], NO_OF_ZOMBIES, NO_OF_WAVES, ALLOWED_PLANTS, NO_OF_LANES, ALLOWED_ZOMBIES);
     }
     else if (level == 2) {

@@ -1,2 +1,20 @@
-﻿  CherryBomb.cpp
+﻿  Executor.cpp
+  GameScreen.cpp
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\GameScreen.cpp(3,25): warning C4305: 'argument': truncation from 'double' to 'float'
+  Level.cpp
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Level.cpp(164,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Level.cpp(164,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Level.cpp(195,91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\Level.cpp(195,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Level1.cpp
+  Level2.cpp
+  Level3.cpp
+  Level4.cpp
+  Level5.cpp
+  Level6.cpp
+  Main.cpp
+  ZombieFactory.cpp
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\ZombieFactory.cpp(46,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\NPlantVsZombies\ZombieFactory.cpp(51,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   NPlantVsZombies.vcxproj -> F:\2nd Semester\Object Oriented Programming\NPlantVsZombies\x64\Debug\NPlantVsZombies.exe

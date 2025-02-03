@@ -20,6 +20,9 @@ protected:
     Grid* grid;
 
     int aliveZombies;
+
+    float spawningTime;
+    Clock SpawnTimeClock;
 public:
     ZombieFactory(int noOfZombies ,int allowedZombies , Grid*& grid, int &score);
     ~ZombieFactory();
@@ -32,6 +35,7 @@ public:
     int selectZombie();
     void AddZombie(Zombie* zombie);
 
+    void decrementSpawnTime();
     void SpawnZombie(bool SummonZombie = false);
     void Draw(RenderWindow& window);
 
