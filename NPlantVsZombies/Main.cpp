@@ -21,6 +21,15 @@ int main()
 	window.setPosition(sf::Vector2i(100, 0));
 	Executor executor;
 	
+	Image icon;
+	if (!icon.loadFromFile("..\\assets\\Background\\icon.png")) {
+		// Handle error if the icon is not found
+		return -1;
+	}
+
+	// Set the window icon
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
 	window.setSize(sf::Vector2u(1000, 600));
 
 	while (window.isOpen())
