@@ -14,20 +14,9 @@ Welcome to the **Plants vs Zombies Clone** project!. The goal is to defend your 
 
 1. Clone the repository:
    ```bash
-   
+   git clone https://github.com/Umairishuman/PlantsvsZombies.git
    ```
-2. Navigate to the project directory:
-   ```bash
-   cd plants-vs-zombies-clone
-   ```
-3. Install dependencies (if required):
-   ```bash
-   npm install
-   ```
-4. Run the game:
-   ```bash
-   npm start
-   ```
+   Naviagte to x64 and run NPlantsvsZombies.exe play the game
 
 ## How to Play
 
@@ -47,37 +36,16 @@ This project is built using:
 - **Game Engine/Framework**: (e.g., Phaser, Unity, etc.)
 - **Graphics**: Custom-designed or sourced assets
 
-## Contributing
-
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add feature description"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
 
 ## Credits
 
 - **Game Concept**: Inspired by the original Plants vs Zombies game.
-- **Development Team**: [Your Name] and contributors.
-- **Assets**: [List of asset sources, if applicable]
+- **Development Team**: [MUhammad Umair] and contributors.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
 For questions, suggestions, or issues, feel free to reach out:
-- Email: your-email@example.com
-- GitHub: [yourusername](https://github.com/yourusername)
+- Email: your- muhammadumair19925@gmail.com
+- GitHub: [Umairishuman](https://github.com/Umairishuman)
 
