@@ -51,3 +51,7 @@ For questions, suggestions, or issues, feel free to reach out:
 
 ## Gameplay
 ![image](https://github.com/user-attachments/assets/1669bfc6-7732-49dc-8f4f-eff07eab0f0a)
+![image](https://github.com/user-attachments/assets/1633e074-5f95-486c-bb21-f50313f64b78)
+![image](https://github.com/user-attachments/assets/2cce1337-63dd-44c9-b2a5-ec99d57f4ecc)
+![image](https://github.com/user-attachments/assets/409c3ac3-4ae1-44b7-8782-9a9987136447)
+![image](https://github.com/user-attachments/assets/be941603-4572-4e48-bf4e-74db88cb9038)
