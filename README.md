@@ -49,3 +49,5 @@ For questions, suggestions, or issues, feel free to reach out:
 - Email: your- muhammadumair19925@gmail.com
 - GitHub: [Umairishuman](https://github.com/Umairishuman)
 
+## Gameplay
+![image](https://github.com/user-attachments/assets/1669bfc6-7732-49dc-8f4f-eff07eab0f0a)
